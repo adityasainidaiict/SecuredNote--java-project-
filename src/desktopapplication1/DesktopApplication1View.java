@@ -215,7 +215,7 @@ public class DesktopApplication1View extends FrameView {
 
     @Action
 
-    public void click() {
+    public void click() {         // Note is written to a file.(at current stage without encription)
 
 
         try {
