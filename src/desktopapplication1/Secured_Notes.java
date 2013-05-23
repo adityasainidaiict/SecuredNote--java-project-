@@ -100,6 +100,9 @@ public class Secured_Notes extends FrameView {
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jTextField1 = new javax.swing.JTextField();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
@@ -143,6 +146,22 @@ public class Secured_Notes extends FrameView {
         jTextArea1.setPreferredSize(new java.awt.Dimension(200, 150));
         jScrollPane1.setViewportView(jTextArea1);
 
+        jScrollPane2.setName("jScrollPane2"); // NOI18N
+
+        jTextArea2.setBackground(resourceMap.getColor("jTextArea2.background")); // NOI18N
+        jTextArea2.setColumns(10);
+        jTextArea2.setRows(3);
+        jTextArea2.setAlignmentY(0.1F);
+        jTextArea2.setName("jTextArea2"); // NOI18N
+        jScrollPane2.setViewportView(jTextArea2);
+
+        jTextField1.setBackground(resourceMap.getColor("jTextField1.background")); // NOI18N
+        jTextField1.setEditable(false);
+        jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
+        jTextField1.setAlignmentY(0.1F);
+        jTextField1.setMaximumSize(new java.awt.Dimension(6, 22));
+        jTextField1.setName("jTextField1"); // NOI18N
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -152,21 +171,37 @@ public class Secured_Notes extends FrameView {
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addGap(87, 87, 87)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(62, 62, 62))
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(167, 167, 167))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(1, 1, 1)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(156, 156, 156))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(15, 15, 15))
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -203,7 +238,7 @@ public class Secured_Notes extends FrameView {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
+int count = 0;
     @Action
 
     public void click() {
@@ -216,20 +251,31 @@ if(jTextArea1.getText().equals(""))
 
 
 }
+if(jTextArea2.getText().equals(""))
+{
+
+    JOptionPane.showMessageDialog(null, "Enter Title In Box", "Secure Note", JOptionPane.INFORMATION_MESSAGE);
+
+
+
+}
+
     else
  {
-        try {
+    
+    try {
+String m = jTextArea2.getText();
 
-    BufferedWriter fileOut = new BufferedWriter(new FileWriter("filename.txt"));
+    BufferedWriter fileOut = new BufferedWriter(new FileWriter(m + ".txt"));
     String myString1 =jTextArea1.getText();
     String myString2 = myString1.replace("\r", "\n");
 
-    System.out.println(myString2);
 
     fileOut.write(myString2);
     fileOut.close();
 jTextArea1.setText("");
-        } catch (IOException ioe) {
+ jTextArea2.setText("");
+    } catch (IOException ioe) {
     System.out.print("error");
 }
 
@@ -254,7 +300,10 @@ jTextArea1.setText(" ");
     private javax.swing.JButton jButton2;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
